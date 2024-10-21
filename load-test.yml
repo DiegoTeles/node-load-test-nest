@@ -1,0 +1,15 @@
+config:
+  target: 'http://localhost:3000'  # URL base da sua aplicação
+  phases:
+    - duration: 1   # O teste de carga durará 60 segundos
+      arrivalRate: 50  # 50 usuários por segundo (requests simultâneas)
+scenarios:
+  - flow:
+      - get:
+          url: "/products"  # Requisição GET para listar os produtos
+  - flow:
+      - post:
+          url: "/products"
+          json:
+            name: "Teste Produto"
+            price: 10.99  # Corpo do POST para criar um produto
